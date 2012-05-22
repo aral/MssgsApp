@@ -1,0 +1,36 @@
+// font-face fonts
+// see http://compass-style.org/docs/reference/compass/css3/font_face/
+
+//@import "compass/css3/font-face"
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/Gotham-Book.eot');
+    src: url('/fonts/Gotham-Book.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Gotham-Book.woff') format('woff'),
+         url('/fonts/Gotham-Book.ttf') format('truetype'),
+         url('/fonts/Gotham-Book.svg#GothamBook') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/Gotham-Light.eot');
+    src: url('/fonts/Gotham-Light.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Gotham-Light.woff') format('woff'),
+         url('/fonts/Gotham-Light.ttf') format('truetype'),
+         url('/fonts/Gotham-Light.svg#GothamLight') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/Gotham-Medium.eot');
+    src: url('/fonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Gotham-Medium.woff') format('woff'),
+         url('/fonts/Gotham-Medium.ttf') format('truetype'),
+         url('/fonts/Gotham-Medium.svg#GothamMedium') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}

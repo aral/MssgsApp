@@ -1,0 +1,2165 @@
+@import "compass/css3"
+
+//-----------------------------------------------
+// The following html5-boilerplate styles should
+// probably be customized for each site
+//-----------------------------------------------
+body, select, input, textarea 
+	color: $font-color
+	// Set your base font here, to apply evenly
+	// font-family: Georgia, serif
+
+
+//-----------------------------------
+// Add your own custom styles below
+//-----------------------------------
+
+body 
+	margin: 0
+	padding: 0
+	background: transparent url( '../img/bg_repeat.jpg' ) repeat 0 0
+	min-width: 976px
+	//@include transform( translateZ(0) )
+	-webkit-font-smoothing: subpixel-antialiased
+	
+	a:visited 
+		color: auto
+	
+
+
+/* !Header */
+header 
+	height: 75px
+	width: 976px
+	margin: 0 auto
+	background: transparent
+	
+	a 
+		float: left
+		text-decoration: none
+		margin: 30px 0 0
+		
+		img 
+			border: 0
+			outline: 0
+			width: 91px
+			height: 24px
+		
+	
+	
+	ul 
+		margin: 2px 0 0
+		padding: 0
+		float: right
+		list-style: none
+		
+		li 
+			float: left
+			
+			margin: 0 16px
+			
+			&.account,
+			&.chat 		
+				margin: 0 0 0 16px		
+				@include transition( all 0.2s ease-in-out )
+				
+				a 
+					display: block
+					
+					padding: 5px 10px 6px
+					margin: 24px 0 0
+				
+					font:
+						family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+						size: 13px
+						font-weight: 400
+					text-decoration: none
+					color: #feffff
+					&:visited 
+						color: #feffff
+										
+					@include text-shadow( 0 1px 1px #82BD2C )
+					@include border-radius( 17px )
+					@include box-shadow( 0 0 2px rgba( 255, 255, 255, 1 ) )
+					background-color: #c8e085
+					@include background-image( linear-gradient(top, rgb(200, 224, 133), rgb(144, 201, 85)) )
+					filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#c8e085', EndColorStr='#90c955')
+					
+					border: 1px solid #72ae1f			
+					@include transition( all 0.2s ease-in-out )		
+				
+				
+				&.selected 
+					border-bottom: 0
+					
+					a 
+						font:
+							family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+							size: 13px
+							weight: 400
+						color: #feffff
+					
+				
+				
+				&:hover 
+					a 
+						@include box-shadow( 0 0 5px rgba( 200, 200, 200, 1 ) )
+						color: #feffff !important
+						@include transition( all 0.2s ease-in-out )
+					
+				
+				
+				&:active, &:focus 
+					@include transition( all 0.2s ease-in-out )
+					border: 0
+					
+					a 
+						font-size: 13px
+						color: #feffff
+						background-color: #90c955
+						@include background-image( linear-gradient(top, rgb(144, 201, 85), rgb(200, 224, 133)) )
+						filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#90c955', EndColorStr='#c8e085')
+						@include transition( all 0.2s ease-in-out )
+				
+			
+			
+			a 
+				display: block
+				
+				padding: 0
+			
+				font:
+					family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+					size: 14px
+					weight: 300
+				text-decoration: none
+				color: #6f8392
+				font-weight: normal
+				
+				@include text-shadow( 0 0 2px #fff )
+				
+				margin: 30px 0 4px
+				@include transition( all 0.2s ease-in-out )
+				
+				&:visited 
+					color: #6F8392
+					@include transition( all 0.2s ease-in-out )
+					
+					&:hover 
+						color: #06e
+						@include transition( all 0.2s ease-in-out )
+					
+				
+			
+			
+			&.selected 
+				border-bottom: 3px solid #e2edf6
+				
+				a 
+					font:
+						family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+						size: 14px
+						weight: 400
+					color: #2278bb
+
+/* !preloader */
+#preload
+	position: absolute
+	top: -9999em
+	left: -9999em
+
+/* !loading */
+#loading
+	z-index: 5000 
+	padding-top: 100px 
+	background:
+		image: initial 
+		attachment: initial 
+		origin: initial 
+		clip: initial 
+		color: white 
+		position: initial initial 
+		repeat: initial initial
+	opacity: 0.5 
+	top: 0 
+	left: 0 
+	right: 0 
+	bottom: 0 
+	position: fixed 
+	text-align: center 
+	display: none
+
+/* !chats list */			
+#chats
+	margin: 0
+	padding: 0
+	position: relative
+	height: auto
+	min-height: 400px
+	display: none
+	@include animate-mode
+	
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	
+	z-index: 9000
+	background: #EFF2F5
+	
+	&.active
+		display: block
+		@include animate-mode
+		@include animate-bounceInDown
+		
+	&.deactive
+		@include animate-mode
+		@include animate-bounceOutUp
+	
+	ul
+		list-style: none
+		margin: 0
+		padding: 0
+		overflow: hidden
+		-webkit-overflow-scrolling: touch
+		background: #EFF2F5
+		@include background-image( linear-gradient(top, #EFF2F5,#DFE8F1) )
+		filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#eff2f5', EndColorStr='#dfe8f1')
+		
+		li
+			border-bottom: 1px solid #B8CADD
+			padding: 15px 20px
+			position: relative
+			
+			&.close
+				background: black
+				//@include box-shadow( inset 0 2px 2px rgba( 255, 255, 255, 0.1 ) )
+				text-align: center
+				
+				strong
+					color: red
+					@include text-shadow( 0 2px 0 rgba( 255, 255, 255, 0.3 ) )
+					font-size: 16px
+					display: block
+					padding: 0
+			
+			&.current
+				//@include box-shadow( inset 0 0 5px rgba( 0, 0, 0, 0.3 ) )
+				background: #D1DFEE
+				
+				strong
+					color: #2F75C3
+			
+			strong
+				margin: 0
+				padding: 0
+				font:
+					family: $base-font-family
+					weight: normal
+					size: 15px
+				color: #4E5740
+				position: relative
+			
+			.badge
+				@include alert-counter
+				position: absolute
+				left: -18px
+				top: -12px
+				right: auto
+				font-style: normal
+
+				&::after, &::before
+					box-sizing: border-box
+					@include user-select( none )
+					text-size-adjust: none
+					touch-callout: none
+					tap-highlight-color: rgba(0, 0, 0, 0)
+					
+			.close
+				position: absolute
+				right: -20px
+				top: 5px
+				background: transparent url( '../img/chat/close.png' ) no-repeat 0 0
+				width: 12px
+				height: 12px
+				text-indent: -9999em
+				cursor: pointer
+			
+			&:last-child
+				border-bottom: 0
+				
+/* !#container */
+#container 
+	margin: -75px auto
+	background: transparent url( '../img/bg.jpg' ) no-repeat 50% 0
+	padding: 75px 0 20px
+	z-index: 10
+	min-height: 500px
+	height: auto
+	
+	&.ipad, &.iphone
+		section.home
+			article.map
+				display: none
+			article.login
+				width: auto
+				max-width: 902px
+	
+	section 
+		width: 976px
+		margin: 0 auto
+		display: none
+		z-index: 20
+		
+		/* !Home */
+		&.home 
+			width: auto
+			margin: 0 0 50px
+			position: relative
+			
+			article 
+				text-align: center
+				z-index: 50
+				
+				&.map 
+					height: 546px
+				
+				
+				.world 
+					//opacity: 0
+					
+					//@include animate-mode
+					//@include animate-fadeInDownBig
+					
+					position: absolute
+					left: 50%
+					margin-left: -617px
+					height: 382px
+					z-index: 100
+				
+				
+				.pin 
+					z-index: 110
+					position: relative
+					
+					opacity: 0
+					@include animate-mode
+					@include animate-fadeInDownBig
+				
+				
+				&.login 
+					padding: 0 0 2px
+					margin: 10px auto 0
+					width: 902px
+					background: transparent url( '../img/shadow.png' ) no-repeat center 58px
+					min-height: 5px
+					position: relative
+					
+					&.red
+						form
+							@include animate-shake
+							@include transition( all 1s ease-in-out )
+							@include box-shadow( 0 0 16px rgba( 188, 49, 38, 0.6 ), inset 0 1px 0 rgba( 255, 255, 255, 0.3 ) )
+					
+					form 
+						@include animate-mode
+						@include transition( all 1s ease-in-out )
+						border: 1px solid #72ae1f
+						width: 835px
+						background-color: #aed457
+						@include background-image( linear-gradient(top, rgb(174, 212, 87), rgb(144, 201, 85)) )
+						filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#aed457', EndColorStr='#90c955')
+						padding: 12px 16px
+						margin: 0 auto 5px
+						@include border-radius( 4px )
+						@include box-shadow( 0 2px 2px rgba( 38, 116, 205, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, 0.3 ) )
+						
+						label 
+							font:
+								family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+								size: 18px
+								weight: 300
+							color: #ffffff
+							@include text-shadow( 0 1px 1px #93cf21 )
+							line-height: 32px
+							margin: 0 10px
+						
+						
+						input 
+							margin: 0 10px
+							@include box-shadow( 0 1px 0 rgba( 255, 255, 255, 0.25 ), inset 0 3px 3px rgba( 114, 174, 31, 0.5 ) )
+							border: 1px solid #72ae1f
+							@include border-radius( 2px )
+							padding: 8px 11px
+							width: 180px
+							
+							font-family: $base-font-family
+							font-size: 14px
+							font-weight: normal
+							color: #3e4431
+							height: 35px
+							@include transition( all 0.2s ease-in-out )
+							outline: 0
+							
+							&:invalid
+								@include transition( all 0.2s ease-in-out )
+								background: white
+							
+							&:active, &:focus 
+								@include transition( all 0.2s ease-in-out )
+								@include box-shadow( 0 0 8px #72AE1F, 0 1px 0 rgba( 255, 255, 255, 0.25 ), inset 0 3px 3px rgba( 114, 174, 31, 0.5 ) )
+							
+							
+							&.submit 
+								font:
+									family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+									size: 16px
+									weight: 400
+								color: #ffffff
+								width: auto
+								border: 1px solid #72ae1f
+								margin: 0
+								padding: 7px 12px
+								
+								@include text-shadow( 0 1px 1px rgba( 132, 161, 217, 0.5 ) )
+								@include box-shadow( 0 2px 0 rgba( 255, 255, 255, 0.25 ), inset 0 1px 0 rgba( 255, 255, 255, 0.25 ) )
+								
+								background-color: #aed457
+								@include background-image( linear-gradient(top, rgb(174, 212, 87), rgb(144, 201, 85)) )
+								filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#aed457', EndColorStr='#90c955')
+								@include border-radius( 4px )
+								@include transition( all 0.2s ease-in-out )
+								
+								&:hover 
+									@include transition( all 0.2s ease-in-out )
+									@include box-shadow( 0 2px 0 rgba( 255, 255, 255, 0.25 ), inset 0 1px 0 rgba( 255, 255, 255, 0.25 ), 0 0 2px rgba( 0, 0, 0, 0.3 ) )
+								
+								
+								&:active, &:focus 
+									@include transition( all 0.2s ease-in-out )
+									background-color: #90c955
+									@include background-image( linear-gradient(top, rgb(144, 201, 85), rgb(174, 212, 87)) )
+									filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#90c955', EndColorStr='#aed457')								
+					
+					p 
+						position: absolute
+						bottom: -30px
+						right: 20px
+						
+						@include text-shadow( 1px 0 1px rgba( 255, 255, 255, 1 ) )
+						font:
+							family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+							size: 14px
+							weight: 400
+						color: #6c829e
+						
+						margin: 0
+						padding: 0
+					
+				
+			
+			
+			h1 
+				font:
+					family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+					size: 48px
+					weight: 300
+				color: #0058a3
+				margin: 20px 0 0
+				padding: 0
+				
+				@include text-shadow( 1px 2px 1px rgba( 255, 255, 255, 1 ) )
+			
+			
+			h2 
+				font:
+					family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+					size: 18px
+					weight: 100
+				color: #92aed0
+				margin: 15px 0 30px
+				padding: 0
+				
+				@include text-shadow( 1px 2px 1px rgba( 255, 255, 255, 1 ) )
+			
+		
+		
+		/* !Main */
+		&.main 
+			background: white
+			@include border-radius( 6px )
+			@include box-shadow( 0 1px 3px #081222, inset 0 10px 25px #d8e7f1, 0 0 250px rgba( 255, 255, 255, 1 ) )
+			//border: 1px solid #c7cfd6
+		
+		
+		/* !Features */
+		&.features 
+			background: white
+			@include border-radius( 6px )
+			@include box-shadow( 0 1px 3px #081222, inset 0 10px 25px #d8e7f1, 0 0 250px rgba( 255, 255, 255, 1 ) )
+			//border: 1px solid #c7cfd6
+			
+			article 
+				padding: 0
+				
+				a 
+					float: right
+					font:
+						family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+						size: 14px
+						weight: 300
+					text-decoration: none
+					color: #79a905
+					padding: 0 15px 0 0
+					
+					background: transparent url( '../img/arrow.png' ) no-repeat right 4px
+					@include transition( all 0.2s ease-in-out )
+					
+					&:hover 
+						@include transition( all 0.2s ease-in-out )
+						text-decoration: underline
+					
+				
+				
+				&.left 
+					padding: 0 74px 0 0
+					overflow: hidden
+					margin: 53px 0
+					
+					img 
+						margin: 0 36px 0 -68px
+										
+				
+				
+				&.right 
+					padding: 0 0 0 46px
+					overflow: hidden
+					margin: 53px 0
+					
+					img 
+						margin: 0 -68px 0 36px
+										
+				
+				
+				&.phone 
+					img 
+						margin: 0 -279px 0 36px 
+					
+				
+				
+				&.webcam 
+					img 
+						margin: 0 -237px 0 -230px
+					
+				
+				
+				&.envelope 
+					img 
+						margin: 0 -102px 0 36px 
+					
+				
+				
+				&.contacts 
+					img 
+						margin: 0 35px 0 22px
+					
+				
+				
+				&.stuff 
+					img 
+						margin: 0 -36px 0 36px
+					
+				
+				
+				&.cloud 
+					padding: 0 42px 0 0	
+				
+				
+				&.mic 
+					img 
+						margin: 0 -55px -50px 36px
+					
+		
+		/* !Chat */
+		&.chat 
+			width: 977px
+			min-width: 977px
+			margin: 0 auto
+			
+			nav 
+				min-height: 35px
+				background-color: #2e3237
+				@include background-image( linear-gradient(top, rgb(46, 50, 55), rgb(40, 43, 47)) )
+				filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#2e3237', EndColorStr='#282b2f')
+				@include border-radius( 5px 5px 0 0 )
+				
+				.next, .prev
+					display: none
+				
+				ul 
+					list-style-type: none
+					overflow: hidden
+					-webkit-overflow-scrolling: touch
+					min-height: 25px
+					margin: 0
+					padding: 10px 0 0
+					position: relative
+					//@include box-shadow( inset 0 1px 1px #fff, inset 0 -1px 1px #9c9c9c )
+					//background: rgb(207,207,207) /* Old browsers */
+					//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfcfcf', endColorstr='#b0b0b0',GradientType=0 ) /* IE6-9 */
+					//@include background( linear-gradient(top, rgba(207,207,207,1) 0%,rgba(176,176,176,1) 100%) ) /* W3C */
+					
+					li 
+						float: left
+						width: auto
+						position: relative
+						float:left
+						@include border-radius( 4px 4px 0 0 )
+						border: 1px solid #1f2326
+						z-index: 1
+						position: relative
+						@include transition( all 0.2s ease-in-out )
+						background-color: #3e434b
+						@include background-image( linear-gradient(top, rgb(62, 67, 75), rgb(34, 36, 41)) )
+						filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#3e434b', EndColorStr='#222429')
+						min-height: 23px
+						border-top: 1px solid #464b54
+						cursor: pointer
+						border-bottom: 0
+						
+						&.new 
+							min-height: 0
+							height: 24px
+							background-color: #f1f1f1
+							background-image: none
+							//@include background-image( linear-gradient(top, rgb(96, 153, 213), rgb(56, 117, 182)) )
+							//filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#6099d5', EndColorStr='#3875b6')
+							position: absolute
+							right: 4px
+							top: 4px
+							border-top: 1px solid #464b54
+							@include transition( all 0.2s ease-in-out )
+							@include border-radius( 4px )
+							
+							strong 
+								color: #324D6B						
+								padding: 0 9px
+								line-height: 21px
+								
+							&:hover
+								border-top: 1px solid #78ace6	
+								@include transition( all 0.2s ease-in-out )
+								background: #8FBC35
+								@include background( linear-gradient(top, #8FBC35 0%,#70A701 50%,#598500 51%,#73AC00 100%) )
+								filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8fbc35', endColorstr='#73ac00',GradientType=0 )
+								
+								strong
+									color: white
+													
+						&:hover 
+							border-top: 1px solid #78ace6
+							@include transition( all 0.2s ease-in-out )							
+							background-color: #6099d5
+							@include background-image( linear-gradient(top, rgb(96, 153, 213), rgb(56, 117, 182)) )
+							filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#6099d5', EndColorStr='#3875b6')
+							
+							strong 
+								color: white
+							
+						
+						
+						strong 
+							display: block
+							float: left
+							line-height: 23px
+							padding-left: 14px
+							font-family: $base-font-family
+							font-size: 13px
+							font-weight: normal
+							
+							color: #939aa4
+							text-decoration: none
+							padding-right: 14px
+							@include text-shadow( 0 1px 1px rgba( 0, 0, 0, 1 ) )
+							@include user-select( none )
+							
+							.badge
+								@include alert-counter
+								font-style: normal
+
+								&::after, &::before
+									box-sizing: border-box
+									@include user-select( none )
+									text-size-adjust: none
+									touch-callout: none
+									tap-highlight-color: rgba(0, 0, 0, 0)
+						
+						.close
+							position: absolute
+							right: 5px
+							top: 6px
+							background: transparent url( '../img/chat/close.png' ) no-repeat 0 0
+							width: 12px
+							height: 12px
+							text-indent: -9999em
+							cursor: pointer
+						
+						.avatar 
+							position: absolute
+							left: 14px
+							top: 4px
+							display: none
+						
+						
+						&:first-child 
+							margin-left: 6px
+						
+						
+						&.current, &:focus, &:active 
+							@include transition( all 0.2s ease-in-out )
+							z-index: 2
+							
+							background: #ffffff
+							border-top: 1px solid #ffffff
+							border-bottom: 0
+							
+							strong
+								color: #324d6b
+								font-weight: normal
+								@include text-shadow( none )
+								
+						&.current
+							padding-right: 10px
+							
+							strong 
+								color: #324d6b
+								font-weight: bold
+								@include text-shadow( none )
+								line-height: 24px
+							
+					   	
+						
+						&.unread 
+							// add a ticker
+
+			
+			article 			
+				padding: 0
+					
+				&.head 
+					height: 111px
+					border-bottom: 1px solid #a0b0c2
+					background-color: #ffffff
+					@include background-image( linear-gradient(top, rgb(255, 255, 255), rgb(209, 223, 238)) )
+					filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ffffff', EndColorStr='#d1dfee')					
+					//@include box-shadow( 0 3px 3px rgba( 0, 47, 104, 0.10 ), inset 0 0 -1px rgba( 0, 14, 31, 0.25 ) )
+					overflow: visible
+					
+					z-index: 20
+					
+					border-left: 1px solid #A0B0C2
+					border-right: 1px solid #A0B0C2
+					
+					margin-top: -1px
+					
+					div 
+						overflow: hidden
+						height: 110px
+						
+						.avatar 
+							width: 85px
+							height: 86px
+							border: 1px solid #ccdbec
+							
+							@include box-shadow( inset 0 1px 0 rgba( 255, 255, 255, 0.3 ) )
+							@include border-radius( 3px )
+							background-color: #bdd2e4
+							@include background-image( linear-gradient(top, rgb(189, 210, 228), rgb(224, 234, 245)) )
+							filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#bdd2e4', EndColorStr='#e0eaf5')
+						
+							img 
+								margin: 5px 0 0 5px
+								@include border-radius( 3px )
+							
+						
+						
+						em 
+							margin: 0
+							padding: 0
+							
+							font-family: $base-font-family
+							font-weight: normal
+							font-style: normal
+							font-size: 12px
+							color: #626f7d
+						
+						
+						
+						
+						strong 
+							margin: 0
+							padding: 0
+							
+							font-family: $base-font-family
+							font-weight: normal
+							font-size: 12px
+							color: #2f75c3
+						
+						
+						h2 
+							margin: 0
+							padding: 0
+							
+							font-family: $base-font-family
+							font-weight: bold
+							font-size: 24px
+							color: #313f56
+						
+					
+					
+					.left 
+						margin: 0
+						padding: 0
+						position: relative
+						width: 495px
+						float: left
+						
+						.avatar 
+							position: absolute
+							top: 13px
+							left: 11px							
+						
+						
+						h2 
+							position: absolute
+							left: 113px 
+							top: 17px							
+						
+						
+						strong 
+							position: absolute
+							left: 113px
+							top: 54px							
+						
+						
+						em 
+							position: absolute
+							left: 113px
+							top: 79px	
+							padding-left: 20px
+							background: transparent url( '../img/chat/status.png' ) no-repeat 0 0							
+						
+					
+					
+					.divider 
+						float: left
+						width: 1px
+						border-right: 1px solid white
+						background-color: #ffffff
+						@include background-image( linear-gradient(top, rgb(255, 255, 255), rgb(168, 191, 217)) )
+						filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ffffff', EndColorStr='#a8bfd9')
+						margin-top: 1px
+						height: 109px
+					
+					
+					.right 
+						margin: 0
+						padding: 0
+						position: relative
+						width: 444px
+						float: right
+						text-align: right
+						
+						&.group
+							h2
+								right: 10px
+							strong
+								right: 10px
+							em
+								right: 10px
+						
+						.avatar 
+							position: absolute
+							top: 13px
+							right: 11px	
+							
+							img 
+								margin: 5px 5px 0 0
+													
+						
+						
+						h2 
+							position: absolute
+							right: 113px 
+							//right: 10px
+							top: 17px			
+							color: #313f56				
+						
+						
+						strong 
+							position: absolute
+							right: 113px
+							//right: 10px
+							top: 54px			
+							color: #2f75c3				
+						
+						
+						em 
+							position: absolute
+							right: 113px
+							//right: 10px
+							top: 79px	
+							font-size: 11px	
+							padding-right: 20px
+							background: transparent url( '../img/chat/users.png' ) no-repeat 99% 0					
+						
+				
+				&.content 
+					height: 415px
+					min-height: 415px
+					overflow-y: auto
+					overflow-x: hidden
+					background-color: #eff2f5
+					@include background-image( linear-gradient(top, rgb(239, 242, 245), rgb(223, 232, 241)) )
+					filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#eff2f5', EndColorStr='#dfe8f1')
+				
+					z-index: 10
+					border-left: 1px solid #A0B0C2
+					border-right: 1px solid #A0B0C2
+					position: relative
+					
+					.scroller
+						position: relative
+				
+					ul 
+						list-style: none
+						margin: 0
+						padding: 13px 11px
+						overflow: hidden
+						-webkit-overflow-scrolling: touch
+						
+						&.font
+							li
+								p
+									font-size: 16px
+						
+						li 
+							display: block
+							margin-bottom: 10px
+							position: relative
+							clear: both
+							
+							&:after
+								content: "."
+								display: block
+								clear: both
+								visibility: hidden
+								line-height: 0
+								height: 0
+							
+							.gm
+								position: absolute
+								top: -5px
+								left: 29px
+								text-decoration: none
+								@include text-shadow( 0 1px 1px rgba( 0, 0, 0, 0.5 ) )
+								color: #fdd32a
+								@include user-select( none )
+								cursor: default
+								
+								&.red
+									color: #9d1e26
+									@include text-shadow( 0 1px 1px #440d13 )
+									
+								&.blue
+									color: #4C77B8
+									@include text-shadow( 0 1px 1px #410d44 )
+									
+								&.pink
+									color: #CCA8B4
+									@include text-shadow( 0 1px 1px #B3005C )
+									
+								&.green
+									color: #96B84C
+									@include text-shadow( 0 1px 1px rgba( 0, 0, 0, 0.5 ) )
+							
+							.avatar
+								height: 36px
+								width: 36px
+								border: 0
+								outline: 0
+								
+								float: left
+								margin: 2px 0 0
+								@include border-radius( 3px )
+							
+							.emoticon
+								margin: -3px 0 0
+							
+							p 
+								margin: 0 0 0 10px
+								padding: 0
+								float: left
+								
+								@include border-radius( 6px )
+								font-family: $base-font-family
+								font-size: 13px
+								color: #4e5740
+								font-weight: normal
+								position: relative
+								max-width: 822px
+								
+								.thumb
+									max-width: 190px
+									@include border-radius( 3px )
+									margin-left: 10px
+									//@include box-shadow( 0 1px 1px rgba( 0, 0, 0, 0.3 ) )
+									cursor: pointer
+									//background: white
+								
+								b 
+									font-family: $base-font-family
+									font-weight: bold
+								
+								
+								.received 
+									font-family: $base-font-family
+									font-size: 10px
+									font-weight: normal
+									
+									position: absolute
+									right: -16px
+									top: 9px
+									font-style: normal
+									
+									opacity: 0.8
+									@include user-select( none )
+								
+								
+								em 
+									font-family: $base-font-family
+									font-size: 10px
+									font-weight: normal
+									
+									padding-left: 17px
+									padding-bottom: 3px
+									display: inline
+									
+									position: absolute
+									right: 8px
+									top: 9px
+									font-style: normal
+								
+								
+								span 
+									display: block
+									padding: 7px 62px 7px 10px
+									border-top: 1px solid rgba( 0, 0, 0, 0.1 )
+									word-wrap: break-word
+									
+									&:first-child 
+										border-top: 0
+										
+									&.snapito
+										position: absolute
+										z-index: 500
+										width: 150px
+										padding: 0
+										height: auto
+										cursor: pointer
+										padding: 0
+										margin: 0
+										right: -96px
+										top: -44px
+										text-decoration: none
+										
+										img
+											width: 150px
+											height: auto
+											border: 2px solid white
+											@include box-shadow( 0 0 2px rgba( 0, 0, 0, 0.2 ) )
+											@include border-radius( 3px )
+											text-decoration: none
+											border: 0
+											outline: 0
+										
+									/* !Embeds */
+									.embed
+										display: block
+										
+										&.youtube
+											@include border-radius( 3px )
+											@include box-shadow( 0 1px 4px rgba( 0, 0, 0, 0.3 ) )
+											margin-top: 10px
+											margin-bottom: 5px
+									object
+										display: block
+										@include border-radius( 3px )
+										@include box-shadow( 0 1px 4px rgba( 0, 0, 0, 0.3 ) )
+										margin-top: 10px
+										margin-bottom: 5px
+							
+							&.you 														
+								p 
+									border: 1px solid #b8cadd
+									background-color: #fefeff
+									@include background-image( linear-gradient(top, rgb(254, 254, 255), rgb(242, 246, 251)) )
+									filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#fefeff', EndColorStr='#f2f6fb')
+									@include box-shadow( 0 2px 2px rgba( 184, 202, 221, 0.25 ), inset 0 15px 25px rgba( 236, 242, 250, 0.75 ) )
+									
+									b 
+										color: #4c77b8
+									
+									
+									em 
+										background: transparent url( '../img/chat/time/blue.png' ) no-repeat 0 0
+										color: #758fb6
+									
+									
+									.received 
+										color: #4c77b8
+									
+									
+									a 
+										color: #4c77b8
+										text-decoration: none
+										@include transition( all 0.2s ease-in-out )
+										
+										&:visited 
+											color: #4c77b8
+										
+										
+										&:hover 
+											@include transition( all 0.2s ease-in-out )
+											text-decoration: underline
+											color: #4c77b8
+										
+							&.me 								
+								p 
+									border: 1px solid #adc586
+									background-color: #eaf7d8
+									@include background-image( linear-gradient(top, rgb(234, 247, 216), rgb(215, 241, 192)) )
+									filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#eaf7d8', EndColorStr='#d7f1c0')
+									@include box-shadow( 0 2px 2px rgba( 167, 184, 139, 0.25 ), inset 0 15px 25px rgba( 225, 244, 204, 0.75 ) )
+									
+									b 
+										color: #96b84c
+									
+									
+									em 
+										background: transparent url( '../img/chat/time/green.png' ) no-repeat 0 0
+										color: #88a161
+										
+									
+									
+									.received 
+										color: #96b84c
+									
+									
+									a 
+										color: #96b84c
+										text-decoration: none
+										@include transition( all 0.2s ease-in-out )
+										
+										&:visited 
+											color: #96b84c
+										
+										
+										&:hover 
+											@include transition( all 0.2s ease-in-out )
+											text-decoration: underline
+											color: #96b84c
+										
+									
+							&.status
+								display: block
+								overflow: hidden
+								margin: 7px 0
+								@include user-select( none )
+							
+								em
+									background: transparent url( '../img/chat/time/blue.png' ) no-repeat 0 0
+									color: #758fb6
+									font: 
+										family: $base-font-family
+										weight: 400
+										size: 10px
+										style: normal
+									color: #758fb6
+									margin: 1px 15px 0 48px
+									display: block
+									float: left
+									padding-left: 17px
+									padding-bottom: 3px
+								
+								p
+									display: block
+									float: left
+									margin: 0
+									padding: 0
+									
+									font:
+										family: $base-font-family
+										weight: normal
+										size: 12px
+										style: normal
+									color: #7d8da6
+									
+									strong
+										font:
+											family: $base-font-family
+											weight: bold
+											size: 12px
+											style: normal
+										margin: -1px
+										
+										&.blue
+											color: #485569
+											padding: 0 2px
+										
+										&.green
+											color: #357403
+											padding:  0 2px 0 20px
+											background: transparent url( '../img/chat/useradd.png' ) no-repeat 0 1px
+											
+										&.red
+											color: #73002d
+											padding:  0 2px 0 20px
+											background: transparent url( '../img/chat/userremove.png' ) no-repeat 0 1px
+									
+								
+								/*&.unread 
+									p 
+										border: 1px solid #f8f8f8
+										background-color: #f3f3f3
+										@include background-image( linear-gradient(top, #ffffff, #f8f8f8) )
+										filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ffffff', EndColorStr='#f8f8f8')
+										@include box-shadow( none )
+										
+										b 
+											color: #ccc
+										
+										
+										a 
+											color: #ccc
+											text-decoration: none
+											@include transition( all 0.2s ease-in-out )
+											
+											&:visited 
+												color: #ccc
+											
+											
+											&:hover 
+												@include transition( all 0.2s ease-in-out )
+												text-decoration: underline
+												color: #ccc*/
+											
+				&.dragdrop
+					height: 31px					
+					background-color: #022f62
+					@include background-image( linear-gradient(top, rgb(2, 47, 98), rgb(2, 48, 98)) )
+					filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#022f62', EndColorStr='#023062')
+					@include box-shadow( 0 -3px 2px rgba( 0, 47, 102, 0.25 ) ) 
+					position: relative
+					display: none
+					
+					p
+						margin: 0 0 0 340px
+						padding: 8px 0 0
+						text-align: center
+						font:
+							family: $base-font-family
+							weight: 400
+							size: 12px
+						color: #9eb3cc
+						padding-left: 26px
+						background: transparent url( '../img/chat/files.png' ) no-repeat 0 6px
+						display: block
+						float: left
+						
+					.button
+						display: block
+						position: absolute
+						right: 2px
+						bottom: -4px
+						line-height: 19px
+						background: #3578bb
+						@include background( linear-gradient(top, #3578bb 0%,#0154a7 50%,#004385 51%,#0055ac 100%) )
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3578bb', endColorstr='#0055ac',GradientType=0 )
+						
+						font:
+							family: $base-font-family
+							weight: bold
+							size: 13px
+						color: white
+						padding: 6px 9px
+						@include box-shadow( inset 0 1px 0 rgba( 0, 0, 0, 0.1 ), 0 3px 7px rgba( 0, 0, 0, 0.9 ) )
+						@include border-radius( 3px )
+						border: 0
+						outline: 0
+						@include text-shadow( 0 1px 0 rgba( 0, 0, 0, 0.3 ) )
+						@include transition( all 0.2s ease-in-out )
+						
+						&:hover
+							@include transition( all 0.2s ease-in-out )
+							@include box-shadow( inset 0 1px rgba( 0, 0, 0, 0.4 ), 0 5px 10px rgba( 0, 0, 0, 1 ) )
+							
+						&:active, &:focus
+							@include transition( all 0.2s ease-in-out )
+							background: #0055ac
+							@include background( linear-gradient(top, #0055ac 0%,#004385 50%,#0154a7 51%,#3578bb 100%) )
+							filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0055ac', endColorstr='#3578bb',GradientType=0 )
+							
+				
+				&.post 
+					height: 89px
+					background-color: #f5f5f6
+					@include background-image( linear-gradient(top, rgb(245, 245, 246), rgb(216, 228, 239)) )
+					filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#f5f5f6', EndColorStr='#d8e4ef')
+					position: relative
+					
+					@include box-shadow( 0 -2px 2px rgba( 0, 47, 102, 0.25 ) )
+					
+					
+					z-index: 30
+					border: 1px solid #A0B0C2
+					border-top: 0
+					@include border-radius( 0 0 4px 4px )
+					
+					&.thumbs
+						margin-top: 12px
+						
+						pre, textarea
+							height: auto
+					
+					pre, textarea				
+						
+						resize: none
+						outline: 0
+						overflow: auto
+						vertical-align: top
+						margin: 0
+						background-color: white
+						rtl-ordering: logical
+						box-orient: vertical
+						cursor: text
+						white-space: pre-wrap
+						word-wrap: break-word
+						font: -webkit-small-control
+						letter-spacing: normal
+						word-spacing: normal
+						line-height: normal
+						text-transform: none
+						text-indent: 0px
+						text-shadow: none
+						display: inline-block
+						text-align: -webkit-auto
+						
+						position: absolute
+						top: 8px
+						bottom: 8px
+						left: 8px
+						right: 8px
+						border: 1px solid #9cb4cc
+						@include border-radius( 3px )
+						color: #485569
+						
+						padding: 16px 100px 16px 12px
+						font-family: $base-font-family
+						font-size: 13px
+						font-weight: normal
+						word-wrap: break-word
+						z-index: 250
+						width: auto
+						
+						@include transition( all 0.2s ease-in-out )
+						
+						&:active, &:focus 
+							border: 1px solid #A0B0C2
+							@include box-shadow( 0 0 2px #A0B0C2 )
+							@include transition( all 0.2s ease-in-out )
+											
+					input 
+						position: absolute
+						right: 30px
+						top: 25px
+						padding: 10px 20px
+						z-index: 2500
+						
+						background: #377abc /* Old browsers */
+						@include background( linear-gradient(top, #377abc 0%,#0155a8 50%,#004a98 51%,#004385 52%,#0055ac 100%) ) /* W3C */
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#377abc', endColorstr='#0055ac',GradientType=0 ) /* IE6-9 */
+						@include box-shadow( 0 1px 2px #a1bad3 )
+						font-family: $base-font-family
+						@include border-radius( 3px )
+						font-size: 13px
+						font-weight: bold
+						color: white
+						border: 0
+						@include text-shadow( 0 1px 0 rgba( 0, 0, 0, 0.3 ) )
+						@include transition( all 0.2s ease-in-out )
+						
+						&:hover
+							@include transition( all 0.2s ease-in-out )
+							@include box-shadow( 0 0px 4px #a1bad3 )
+							background: #0055ac /* Old browsers */
+							@include background( linear-gradient(top, #0055ac 0%,#004385 50%,#004a98 51%,#0155a8 52%,#377abc 100%) ) /* W3C */
+							filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0055ac', endColorstr='#377abc',GradientType=0 ) /* IE6-9 */
+							
+						
+						&:active, &:focus
+							@include transition( all 0.2s ease-in-out )
+							background: #8FBC35
+							@include background( linear-gradient(top, #8FBC35 0%,#70A701 50%,#598500 51%,#73AC00 100%) )
+							filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8fbc35', endColorstr='#73ac00',GradientType=0 )							
+							color: white
+						
+				&.notifications
+					position: fixed
+					bottom: 20px
+					right: 20px
+					z-index: 2000
+					
+					p
+						display: block
+						margin: 0 0 20px
+						padding: 10px 25px
+						background-color: #f9fbfe
+						
+						@include box-shadow( 0 0 1px #385779, 0 0 50px #3177c4, inset 0 -10px 20px rgba( 170, 204, 241, 0.5 ) )
+						@include border-radius( 6px )
+						border: 4px solid #020a18
+						overflow: hidden
+						
+						&:last-child
+							margin: 0
+						
+						strong
+							display: block
+							font:
+								family: $base-font-family
+								weight: 700
+								size: 18px
+							color: #313f56
+							margin: 0 0 8px
+							padding: 0
+							
+						span
+							display: block
+							font:
+								family: $base-font-family
+								weight: 400
+								size: 12px
+							color: #4d627c
+							margin: 0 0 5px
+							padding: 0
+							overflow: hidden
+						a
+							display: block
+							float: left
+							margin: 0 6px 0 0
+							padding: 8px 8px 8px 8px
+							@include border-radius( 3px )
+							@include user-select( none )							
+							&:last-child
+								margin: 0
+							
+							&.accept
+								border:
+									top: 1px solid #75992d
+									left: 1px solid #70a20a
+									right: 1px solid #70a20a
+									bottom: 1px solid #72ab00
+								background: #8dbb31
+								@include background( linear-gradient(top, #8dbb31 0%,#6fa601 50%,#588500 51%,#72ab00 100%) )
+								filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8dbb31', endColorstr='#72ab00',GradientType=0 )
+								@include box-shadow( 0 2px 2px rgba( 255, 255, 255, 0.3 ) )
+								@include transition( all 0.2s ease-in-out )
+								
+								span
+									margin: -1px 0 0
+									padding: 0
+									padding: 0 0 0 18px
+									background: transparent url( '../img/chat/notifications/tick.png' ) no-repeat 0 2px
+									color: white
+									@include text-shadow( 1px 0 1px rgba( 0, 0, 0, 0.35 ) )
+									font:
+										family: $base-font-family
+										size: 12px
+										weight: 700
+								
+								&:hover
+									@include transition( all 0.2s ease-in-out )
+									text-decoration: none
+									@include box-shadow( 0 2px 4px rgba( 255, 255, 255, 1 ) )
+									
+									span
+										@include text-shadow( 2px 0 2px rgba( 0, 0, 0, 0.5 ) )
+									
+								&:active, &:focus
+									@include transition( all 0.2s ease-in-out )
+									background: #72ab00
+									@include background( linear-gradient(top, #72ab00 0%,#588500 50%,#6fa601 51%,#8dbb31 100%) )
+									filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#72ab00', endColorstr='#8dbb31',GradientType=0 )
+								
+							&.reject
+								float: right
+								border:
+									top: 1px solid #bc4545
+									left: 1px solid #c20909
+									right: 1px solid #c20909
+									bottom: 1px solid #cc0000
+								background: #e54c4c
+								@include background( linear-gradient(top, #e54c4c 0%,#ca0101 50%,#a60000 51%,#c90000 100%) ) /* W3C */
+								filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e54c4c', endColorstr='#c90000',GradientType=0 ) /* IE6-9 */
+								@include box-shadow( 0 2px 2px rgba( 255, 255, 255, 0.3 ) )
+								@include transition( all 0.2s ease-in-out )
+								
+								span
+									margin: -1px 0 0
+									padding: 0
+									padding: 0 0 0 18px
+									background: transparent url( '../img/chat/notifications/cross.png' ) no-repeat 0 3px
+									color: white
+									@include text-shadow( 1px 0 1px rgba( 0, 0, 0, 0.35 ) )
+									font:
+										family: $base-font-family
+										size: 12px
+										weight: 700
+								
+								&:hover
+									@include transition( all 0.2s ease-in-out )
+									text-decoration: none
+									@include box-shadow( 0 2px 4px rgba( 255, 255, 255, 1 ) )
+									
+									span
+										@include text-shadow( 2px 0 2px rgba( 0, 0, 0, 0.5 ) )
+									
+								&:active, &:focus
+									@include transition( all 0.2s ease-in-out )
+									background: #c90000
+									@include background( linear-gradient(top, #c90000 0%,#a60000 50%,#ca0101 51%,#e54c4c 100%) ) /* W3C */
+									filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c90000', endColorstr='#e54c4c',GradientType=0 ) /* IE6-9 */
+					
+							
+		/* !Article */
+		article 
+			padding: 10px 60px 40px
+			
+			
+			&.top 
+				background: transparent url( '../img/top.png' ) no-repeat 0 0
+				width: 976px
+				height: 24px
+				margin: 0
+				padding: 0
+			
+			
+			h1 
+				font:
+					family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+					size: 30px
+					weight: 100
+				color: #0063b0
+			
+			
+			h2 
+				font:
+					family: 'Gotham', Helvetica Neue, Helvetica, sans-serif
+					size: 20px
+					weight: 100
+				color: #0063b0
+			
+			
+			h3 
+				font-family: Gill Sans, sans-serif
+				font-size: 14px
+				font-weight: bold
+				color: #6e8392
+			
+			
+			p 
+				font-family: Gill Sans, sans-serif
+				font-size: 13px
+				color: #6e8392
+				font-weight: normal
+			
+			
+			a 
+				text-decoration: none
+				@include transition( all 0.2s ease-in-out )
+				
+				&:hover 
+					@include transition( all 0.2s ease-in-out )
+					text-decoration: underline
+
+
+#contacts
+	width: 624px
+	height: 586px
+	position: absolute
+	top: 60px
+	right: 30px
+	@include border-radius( 3px )
+	@include box-shadow( 0 0 30px rgba( 0, 0, 0, 0.7 ) )
+	
+	.head
+		@include border-radius( 3px 3px 0 0 )
+		height: 25px
+		background-color: #1e2228
+		@include background-image( linear-gradient(top, rgb(30, 34, 40), rgb(23, 26, 31)) )
+		filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#1e2228', EndColorStr='#171a1f')
+		display: block
+		position: relative
+		
+		h3
+			margin: 0 auto
+			padding: 3px 0 0 257px
+			font:
+				family: $base-font-family
+				weight: bold
+				size: 13px
+			color: #5a6676
+			@include text-shadow( 0 1px 1px #181b21 )
+		
+		.plus
+			position: absolute
+			right: 5px
+			top: 0
+			padding: 4px 7px 1px
+			display: block
+			background: #12151a
+			@include box-shadow( inset 0 3px 0 rgba( 0, 0, 0, 0.8 ), 0 1px 0 rgba( 255, 255, 255, 0.3 ) )
+			cursor: pointer
+			@include border-radius( 3px )
+			@include transition( all 0.2s ease-in-out )
+			
+			&:hover
+				@include transition( all 0.2s ease-in-out )
+				background: #5a6676
+				color: white
+	
+	.top
+		background-color: #03366e
+		@include background-image( linear-gradient(top, rgb(3, 54, 110), rgb(2, 45, 95)) )
+		filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#03366e', EndColorStr='#022d5f')
+		position: relative
+		height: 42px
+		@include box-shadow( 0 5px 5px rgba( 0, 0, 0, 0.5 ) )
+		
+		.looking_glass
+			width: 13px
+			height: 15px
+			display: block
+			background: transparent url( '../img/looking_glass.png' ) no-repeat 0 0
+			position: absolute
+			left: 18px
+			top: 14px
+			z-index: 2000
+		
+		.search
+			width: 602px
+			margin: 10px 10px 0
+			height: 24px
+			padding: 3px 10px 3px 25px
+			background-color: #153c6b
+			@include background-image( linear-gradient(top, rgb(21, 60, 107), rgb(39, 78, 121)) )
+			filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#153c6b', EndColorStr='#274e79')
+			border: 1px solid #000b1a
+			@include box-shadow( 0 -1px 1px rgba( 255, 255, 255, 0.1 ) )
+			@include border-radius( 30px )
+			font:
+				family: $base-font-family
+				size: 12px
+				weight: 400
+			color: #7fa5d4
+			outline: 0
+			@include text-shadow( 0 1px 1px rgba( 34, 73, 122, 0.5 ) )
+			z-index: 220
+		
+		.submit
+			position: absolute
+			top: -9999em
+	
+	.content
+		height: 491px
+		overflow-y: auto
+		overflow-x: hidden
+		
+		ul
+			list-style: none
+			margin: 0
+			padding: 0
+			
+			li
+			
+				&.letter
+					height: 12px
+					background-color: #274a73
+					@include background-image( linear-gradient(top, rgb(39, 74, 115), rgb(39, 81, 125)) )
+					filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#274a73', EndColorStr='#27517d')
+					border-top: 1px solid #3c5c84
+					border-bottom: 1px solid #00275b
+					padding: 3px 5px
+					font:
+						family: $base-font-family
+						weight: bold
+						size: 13px
+					color: white
+					@include text-shadow( 0 1px 1px rgba( 0, 0, 0, 0.5 ) )
+					display: block
+					
+				&.contact
+					height: 29px
+					background-color: #033770
+					@include background-image( linear-gradient(top, rgb(3, 55, 112), rgb(2, 49, 102)) )
+					filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#033770', EndColorStr='#023166')
+					border-top: 1px solid #0d407a
+					border-bottom: 1px solid #002252
+					display: block
+					position: relative
+					@include transition( all 0.2s ease-in-out )
+					
+					&:hover
+						@include transition( all 0.2s ease-in-out )
+						background-color: #023166
+						@include background-image( linear-gradient(top, rgb(2, 49, 102), rgb(3, 55, 112)) )
+						filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#023166', EndColorStr='#033770')
+						
+						span
+							display: block
+					
+					img
+						width: 29px
+						height: 30px
+						float: left
+						border-right: 1px solid #002252
+					
+					p
+						margin: 5px 8px 0
+						padding: 0
+						display: block
+						float: left
+						width: 400px
+						font:
+							family: $base-font-family
+							size: 13px
+							weight: normal
+						color: #8db0d8
+						@include text-shadow( 0 1px 1px rgba( 0, 0, 0, 0.5 ) )
+						
+						strong
+							font:
+								family: $base-font-family
+								size: 13px
+								weight: bold
+							color: white
+						
+					span
+						display: none
+						position: absolute
+						top: 7px
+						right: 0
+						font:
+							family: $base-font-family
+							weight: normal
+							size: 12px
+						color: #8db0d8
+						margin: 0
+						padding: 0
+						cursor: pointer
+						@include transition( all 0.2s ease-in-out )
+						
+						&:hover
+							@include transition( all 0.2s ease-in-out )
+							@include text-shadow( 0 1px 1px rgba( 0, 0, 0, 0.5 ) )
+						
+						em
+							text-indent: -9999em
+							position: absolute
+							left: -20px
+							top: 0
+						
+						&.edit
+							right: 108px
+							
+							em
+								width: 14px
+								height: 16px
+								display: block
+								background: transparent url( '../img/contact_icons.png' ) no-repeat 0 0
+						
+						&.delete
+							right: 14px
+							
+							em
+								top: -1px
+								width: 14px
+								height: 16px
+								display: block
+								background: transparent url( '../img/contact_icons.png' ) no-repeat -14px 0
+							
+				
+	
+	.addcontact
+		height: 34px
+		background-color: #19365c
+		@include background-image( linear-gradient(top, rgb(25, 54, 92), rgb(1, 26, 64)) )
+		filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#19365c', EndColorStr='#011a40')
+		@include border-radius( 0 0 3px 3px )
+		padding: 9px
+		@include box-shadow( inset 0 1px 0 rgba( 255, 255, 255, 0.05 ) )
+		
+		.text, select
+			height: 33px
+			width: 160px
+			@include border-radius( 3px )
+			margin-right: 12px
+			background-color: #001330
+			@include background-image( linear-gradient(top, rgb(0, 19, 48), rgb(1, 22, 54)) )
+			filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#001330', EndColorStr='#011636')
+			@include box-shadow( 0 1px 0 rgba( 255, 255, 255, 0.05 ), inset 0 3px 5px rgba( 0, 28, 71, 0.5 ) )
+			border: 0
+			padding: 0 10px
+			font:
+				family: $base-font-family
+				weight: bold
+				size: 13px
+			color: #90aed0
+			
+		select
+			background: #001330 url('../img/forms/select_arrow_blue.gif') no-repeat right center
+			line-height: 30px
+			@include transition( all 0.2s ease-in-out )
+			
+			&:hover
+				@include transition( all 0.2s ease-in-out )
+				cursor: pointer
+			
+		.submit
+			height: 33px
+			width: 72px
+			@include border-radius( 3px )
+			background: rgb(53,120,187)
+			@include background( linear-gradient(top, rgba(53,120,187,1) 0%,rgba(1,85,168,1) 50%,rgba(0,67,133,1) 51%,rgba(0,85,172,1) 100%) )
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3578bb', endColorstr='#0055ac',GradientType=0 )
+			border: 0
+			outline: 0
+			font:
+				family: $base-font-family
+				weight: bold
+				size: 13px
+			color: white
+			text-align: center
+			@include text-shadow( none )
+			cursor: pointer
+			@include transition( all 0.2s ease-in-out )
+			
+			&:hover
+				@include transition( all 0.2s ease-in-out )
+				background: rgb(143,188,53)
+				@include background( linear-gradient(top, rgba(143,188,53,1) 0%,rgba(112,167,1,1) 50%,rgba(89,133,0,1) 51%,rgba(115,172,0,1) 100%) )
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fbc35', endColorstr='#73ac00',GradientType=0 )
+
+/* Mobile */
+.native
+	min-width: 280px
+	//@include transform( translateZ(0) )
+	
+	.formhide
+		position: absolute !important
+		left: -9999em !important
+		right: auto !important
+	
+	header
+		min-width: 91px
+		width: auto
+		
+		.logo
+			padding: 30px 0 0
+			display: block
+			margin: 0 auto
+			float: none
+			text-align: center
+		
+		ul
+			display: none
+			
+	#container
+		min-height: 215px
+		height: auto
+		padding: 75px 0 0
+		&.chat
+			padding: 0
+			margin: 0
+		
+		section
+			&.chat
+				//margin-top: -75px
+				width: auto
+				min-width: 260px
+				z-index: 3500
+				position: relative
+				
+				.upper-nav
+					//display: none
+					height: 35px
+					@include border-radius( 0 )
+					overflow: hidden
+					-webkit-overflow-scrolling: touch
+					
+					border-top: 1px solid #78ace6
+					@include transition( all 0.2s ease-in-out )							
+					background-color: #6099d5
+					@include background-image( linear-gradient(top, rgb(96, 153, 213), rgb(56, 117, 182)) )
+					filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#6099d5', EndColorStr='#3875b6')
+					//background-image: none
+					//filter: none
+					
+					position: relative
+					//@include box-shadow( inset 0 -1px 0 rgba( 255, 255, 255, 0.2 ) )
+					@include box-shadow( none )
+					border-bottom: 1px solid #5c6368
+					
+					.prev, .next
+						display: block
+						position: absolute
+						
+						strong
+							padding: 3px 8px
+							line-height: 14px
+							color: white
+							
+							&.active
+								color: black
+								
+						
+					.prev
+						left: 6px
+						top: 5px
+						@include border-radius( 4px )
+						margin: 0
+						
+					.next
+						right: 6px
+						top: 5px
+						@include border-radius( 4px )
+					
+					ul
+						float: left
+						height: 35px
+						width: auto
+						min-width: 260px
+						overflow: hidden
+						-webkit-overflow-scrolling: touch
+						position: absolute
+						top: 0
+						left: 0
+						right: 0
+						
+						li
+							//&.deselected
+							display: none
+							
+							&:hover
+								border-top: 1px solid #1F2326
+								background-color: #3E434B
+								background-image: none
+							
+							&.prev, &.next
+								display: block
+								
+								&.active
+									background: black
+									strong
+										color: white
+								
+							&.current
+								width: auto
+								padding-right: 0
+								position: absolute
+								top: 3px
+								left: 45px
+								right: 45px
+								min-height: 28px
+								height: 28px
+								border-top: 0
+								display: block
+								//@include border-radius( 4px )
+								background: transparent
+								border: 0
+								
+								strong
+									width: 100%
+									position: relative
+									padding: 0
+									margin: 0
+									color: white
+									@include text-shadow( 0 1px 0 rgba( 0, 0, 0, 0.3 ) )
+									line-height: 27px
+									
+									.close
+										right: 0px
+										top: 7px
+										
+									.badge
+										top: -2px
+										left: -8px
+										right: auto
+									
+							&.new
+								position: absolute
+								right: 0
+								top: 0
+								@include border-radius( 0 )
+								min-height: 35px
+								@include transition( all 0.2s ease-in-out )
+								//background: #3E434B
+								//@include background( linear-gradient(top, #3E434B,#222429) )
+								background: transparent
+								border: 0
+								display: none
+								
+								strong
+									color: white
+									line-height: 33px
+									font-weight: bold
+									@include transition( all 0.2s ease-in-out )
+									
+								&:hover
+									background: white
+									@include transition( all 0.2s ease-in-out )
+									
+									strong
+										color: black
+										@include transition( all 0.2s ease-in-out )
+							
+							
+								
+							strong
+								em
+									display: none
+						
+						
+				.head
+					display: none !important
+					
+				.content
+					height: auto
+					min-height: 419px
+					background-image: none
+					filter: none
+					
+					ul
+						padding: 3px 5px 0
+						
+						li
+							margin-bottom: 5px
+							&.you
+								float: right
+								
+								p
+									@include box-shadow( none )
+									background-image: none
+									filter: none
+							&.me
+								float: left
+								
+								p
+									@include box-shadow( none )
+									background-image: none
+									filter: none
+							&.status
+								em
+									margin-left: 1px
+								
+							.gm
+								display: none
+							.avatar
+								display: none
+								
+							p
+								margin-left: 0
+								word-break: break-word
+								@include box-shadow( none )
+				.post
+					height: 40px
+					@include border-radius( 0 )
+					@include box-shadow( none )
+					border-top: 1px solid #A0B0C2
+					background-image: none
+					filter: none
+					
+					pre,
+					textarea
+						width: auto
+						top: 4px
+						left: 4px
+						right: 4px
+						bottom: 4px
+						padding: 8px 80px 8px 8px
+						min-height: 34px
+						@include box-shadow( none )
+						
+						&:active, &:focus
+							@include box-shadow( none )
+						
+					input
+						right: 6px
+						top: 6px
+						padding: 7px 11px
+						@include box-shadow( none )
+				
+		
+			&.home
+				
+				h1
+					font-size: 32px
+					
+				article
+					&.map
+						display: none
+						height: auto
+						
+						#your_location_pin
+							display: none
+						
+						.world
+							display: none
+						
+					&.login
+						min-width: 112px
+						width: auto
+						background: transparent
+						
+						form
+							width: 200px
+							//@include box-shadow( none )
+							
+							input
+								display: block
+								//@include box-shadow( none )
+								
+								&.submit
+									margin: 10px 0px 0px 40px
+									
+									&:hover
+										border: 2px solid #72AE1F
+										//@include box-shadow( none )
+						p
+							display: none
+							left: 0
+							right: 0
+			
+
+/* !IE fixes */
+html 
+	&.oldie 
+		#container 
+			section 
+				&.home 
+					article 
+						img 
+							opacity: 1
+						

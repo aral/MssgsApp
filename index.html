@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="no-js ie6 oldie"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js ie7 oldie"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js ie8 oldie"> <![endif]-->
+<!--[if IE 9]>    <html lang="en" class="no-js ie9 oldie"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js native iphone" lang="en">
+<!--<![endif]-->
+	<head>
+	<meta charset="utf-8" />
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+	<meta name="viewport" id="view" content="device-width,initial-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta content="Chat with all of your friends" name="description" />
+	<meta content="Whipe" name="author" />
+
+	<title>Mssgs</title>
+	
+	<script src="phonegap-1.4.1.js"></script>
+	<link href="css/style.css" rel="stylesheet" />
+	</head>
+	<body class="native">
+		<header>
+			<a class="logo" href="/" title="mss.gs">
+				<img src="img/logo.png" alt="mss.gs" title="mss.gs" />
+			</a>
+			<ul>
+				<li class="home">
+					<a href="#!/" title="Home">Home</a>
+				</li>
+				<li class="features">
+					<a href="#!/features" title="Features">Features</a>
+				</li>
+				<li class="plans">
+					<a href="#!/plans" title="Plans">Plans</a>
+				</li>
+				<li class="faq">
+					<a href="#!/faq" title="FAQ">FAQ</a>
+				</li>
+				<li class="contacts" style="display: none;">
+					<a href="#!/contacts" title="Contacts">Contacts</a>
+				</li>
+				<li class="chat" style="display: none;">
+					<a href="#!/chat/main" title="Chat">Chat</a>
+				</li>
+				<li class="account">
+					<a href="#!/register" title="Register">Create an account</a>
+				</li>
+			</ul>
+		</header>
+		<div id="loading">
+		</div>
+		<div id="preload">
+		        <img src="img/chat/userremove.png" />
+		        <img src="img/chat/useradd.png" />
+		        <img src="img/chat/time/blue.png" />
+		        <img src="img/chat/time/green.png" />
+		        <img src="img/chat/close.png" />
+		        <img src="img/chat/users.png" />
+		</div>
+		<div id="chats">
+		        <ul class="list"></ul>
+		</div>
+		<div id="container" data-enhance=false>
+		
+			<section class="home">
+				<article class="login">
+					<form id="login_form" method="post" data-enhance=false>
+						<label for="login_username">E-mail:</label>
+						<input type="email" name="username" id="login_username" />
+						<label for="login_password">Password:</label>
+						<input type="password" name="password" id="login_password" />
+						<input class="submit" type="submit" name="submit" id="login_submit" value="Sign in now" />
+						<input class="submit" type="submit" name="submit" id="register_submit" value="Register today" style="display: none;" />
+					</form>
+					<p id="home_no_account">
+						No account? Click <a href="#!/register" title="Register">here</a>!
+					</p>
+					<p id="home_has_account" style="display: none;">
+						Already have an account? Click <a href="#!/" title="Home">here</a>!
+					</p>
+				</article>
+			</section>
+			<section class="main">
+
+			</section>
+			
+			<section class="features">
+			
+			</section>
+			<section class="chat">
+				<article class="notifications" id="notify">
+				</article>
+				<nav class="upper-nav">
+					<ul id="tab-list">
+					</ul>
+				</nav>
+				<article class="head" id="chat-head">
+					<div class="left">
+					</div>
+					<div class="divider"></div>
+					<div class="right">
+					</div>
+				</article>
+				<article class="content" id="wrapper">
+					<ul id="chat-content">
+					</ul>
+				</article>
+                <article class="dragdrop">
+					<p>Drop</p>
+					<!-- <input type="button" class="button" value="Voeg toe"> -->
+                </article>
+				<article class="post form">
+				    <form name="submit" onsubmit="return false;">
+					<input type="text" tabindex="1" name="prev" value="" class="prev formhide" />
+					<textarea name="post" tabindex="2"></textarea>
+					<input type="text" tabindex="3" name="next" value="" class="next formhide" />
+					<input name="submit" type="submit" value="Send" />
+                                    </form>
+				</article>
+				<article class="post thumbs" id="chat-thumbs">
+					<pre name="post"></pre>
+				</article>
+			</section>
+		</div>
+		<footer>
+		
+		</footer>
+		<script src="PushNotifications.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/script.js"></script>
+		<script src="http://api.mss.gs:8100/socket.io/socket.io.js"></script>
+		<script src="js/utils.js"></script>
+		<script src="js/gui.js"></script>
+		<script src="js/conversation.js"></script>
+		<script src="js/log.js"></script>
+		<script src="js/user.js"></script>
+		<script src="js/lang.js"></script>
+		<script src="js/lang/nl.js"></script>
+		<script src="js/lang/en.js"></script>
+	</body>
+</html>
